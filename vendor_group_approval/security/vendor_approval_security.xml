@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_vendor_approver" model="res.groups">
+            <field name="name">Vendor Approver</field>
+            <field name="category_id" ref="base.module_category_purchase_management"/>
+        </record>
+
+        <record id="action_vendor_approval_group" model="ir.actions.act_window">
+            <field name="name">Vendor Approval Groups</field>
+            <field name="res_model">vendor.approval.group</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_vendor_approval_root"
+                  name="Vendor Approval"
+                  parent="purchase.menu_purchase_config"
+                  sequence="90"
+                  groups="vendor_group_approval.group_vendor_approver"/>
+
+        <menuitem id="menu_vendor_approval_group"
+                  name="Approval Groups"
+                  parent="menu_vendor_approval_root"
+                  action="action_vendor_approval_group"
+                  sequence="10"
+                  groups="vendor_group_approval.group_vendor_approver"/>
+
+        <!-- Vendor Approval Group: multi-company rule -->
+        <record id="vendor_approval_group_multi_company_rule" model="ir.rule">
+            <field name="name">Vendor Approval Group multi company</field>
+            <field name="model_id" ref="model_vendor_approval_group"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="1"/>
+        </record>
+
+        <!-- Vendor Approval Level: multi-company rule -->
+        <record id="vendor_approval_level_multi_company_rule" model="ir.rule">
+            <field name="name">Vendor Approval Level multi company</field>
+            <field name="model_id" ref="model_vendor_approval_level"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="1"/>
+        </record>
+
+        <!-- Vendor Approval Matrix: multi-company rule -->
+        <record id="vendor_approval_matrix_multi_company_rule" model="ir.rule">
+            <field name="name">Vendor Approval Matrix multi company</field>
+            <field name="model_id" ref="model_vendor_approval_matrix"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="1"/>
+        </record>
+
+        <record id="vendor_approval_group_multi_company_rule" model="ir.rule">
+            <field name="name">Vendor Approval Group multi company</field>
+            <field name="model_id" ref="model_vendor_approval_group"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="1"/>
+        </record>
+    </data>
+</odoo>

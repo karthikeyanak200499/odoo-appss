@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_res_partner_form_vendor_approval" model="ir.ui.view">
+            <field name="name">res.partner.form.vendor.approval.group.workflow</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//sheet" position="inside">
+                    <field name="supplier_rank" invisible="1"/>
+                    <field name="vendor_approval_state" invisible="1"/>
+                    <field name="vendor_is_current_approver" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="customer_rank" invisible="1"/>
+                     <field name="vendor_approval_group_id"
+                                       readonly="vendor_approval_state in ('pending','approved')" required="supplier_rank == True"
+                            invisible="customer_rank == True"
+                     />
+                    <field name="vendor_pending_at" readonly="1"  invisible="customer_rank == True"/>
+
+
+                </xpath>
+
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <field name="supplier_rank" invisible="1"/>
+                        <field name="vendor_is_current_approver" invisible="1"/>
+
+                        <button name="action_vendor_submit_for_approval"
+                                type="object"
+                                string="Submit for Approval"
+                                class="btn-primary"
+                                groups="vendor_group_approval.group_vendor_approver"
+                                invisible="supplier_rank &lt;= 0 or vendor_approval_state in ('pending','approved')"/>
+
+                        <button name="action_vendor_approve"
+                                type="object"
+                                string="Approve"
+                                class="btn-success"
+                                groups="vendor_group_approval.group_vendor_approver"
+                                invisible="not vendor_is_current_approver"/>
+
+                        <button name="action_vendor_reject"
+                                type="object"
+                                string="Reject"
+                                class="btn-danger"
+                                groups="vendor_group_approval.group_vendor_approver"
+                                invisible="not vendor_is_current_approver"/>
+
+                        <field name="vendor_approval_state"
+                               widget="statusbar"
+                               statusbar_visible="draft,pending,approved,rejected"
+                               invisible="supplier_rank &lt;= 0"/>
+                    </header>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Vendor Approval" invisible="supplier_rank &lt;= 0">
+                        <group>
+                            <group string="Workflow">
+<!--                                <field name="vendor_approval_group_id"-->
+<!--                                       readonly="vendor_approval_state in ('pending','approved')" required="supplier_rank == True"/>-->
+                                <field name="vendor_current_approval_level_id" readonly="1"/>
+                                <field name="vendor_attachment_count" readonly="1"/>
+                            </group>
+                            <group string="Status">
+<!--                                <field name="vendor_pending_at" readonly="1"/>-->
+                                <field name="vendor_approval_state" readonly="1"/>
+                            </group>
+                        </group>
+
+                        <separator string="Approval History"/>
+
+                        <field name="vendor_approval_line_ids" readonly="1">
+                            <tree string="Vendor Approval History">
+                                <field name="level"/>
+                                <field name="approval_level_id"/>
+                                <field name="approver_user_id"/>
+                                <field name="user_id"/>
+                                <field name="action"/>
+                                <field name="approved_by"/>
+                                <field name="approved_on"/>
+                                <field name="notes"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_approval_group_user,vendor.approval.group user,model_vendor_approval_group,base.group_user,1,0,0,0
+access_vendor_approval_group_manager,vendor.approval.group manager,model_vendor_approval_group,vendor_group_approval.group_vendor_approver,1,1,1,1
+access_vendor_approval_level_user,vendor.approval.level user,model_vendor_approval_level,base.group_user,1,0,0,0
+access_vendor_approval_level_manager,vendor.approval.level manager,model_vendor_approval_level,vendor_group_approval.group_vendor_approver,1,1,1,1
+access_vendor_approval_matrix_user,vendor.approval.matrix user,model_vendor_approval_matrix,base.group_user,1,0,0,0
+access_vendor_approval_matrix_manager,vendor.approval.matrix manager,model_vendor_approval_matrix,vendor_group_approval.group_vendor_approver,1,1,1,0

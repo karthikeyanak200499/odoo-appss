@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--        <record id="mail_template_vendor_stage_request" model="mail.template">-->
+        <!--            <field name="name">Vendor Approval - Action Required</field>-->
+        <!--            <field name="model_id" ref="base.model_res_partner"/>-->
+        <!--            <field name="subject">Vendor Approval Needed: {{ object.name }}</field>-->
+        <!--            <field name="email_from">{{ user.email_formatted or '' }}</field>-->
+        <!--            <field name="body_html" type="html">-->
+        <!--                <div>-->
+        <!--                    <p>Hello,</p>-->
+        <!--                    <p><b>Vendor approval is required</b> for:</p>-->
+        <!--                    <ul>-->
+        <!--                        <li><b>Name:</b> <t t-out="object.name or ''"/></li>-->
+        <!--                        <li><b>Company:</b> <t t-out="object.company_id.name or ''"/></li>-->
+        <!--                        <li><b>Current Level:</b> <t t-out="object.vendor_current_approval_level_id.name or ''"/></li>-->
+        <!--                        <li><b>Status:</b> <t t-out="object.vendor_approval_state or ''"/></li>-->
+        <!--                    </ul>-->
+        <!--                    <p>-->
+        <!--                        <a t-att-href="object.get_res_partner_url()"-->
+        <!--                           style="background:#875A7B;color:#fff;padding:10px 14px;text-decoration:none;border-radius:6px;">-->
+        <!--                            View Vendor Approval Request-->
+        <!--                        </a>-->
+        <!--                    </p>-->
+        <!--                    <p>Thanks.</p>-->
+        <!--                </div>-->
+        <!--           </field>-->
+        <!--        </record>-->
+        <record id="mail_template_vendor_stage_request" model="mail.template">
+            <field name="name">Vendor Approval - Action Required</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="subject">Vendor Approval Request: {{ object.name }}</field>
+            <field name="email_from">{{ user.email_formatted or '' }}</field>
+
+            <field name="body_html" type="html">
+                <div style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333;">
+
+                    <p>Dear Approver,</p>
+
+                    <p>
+                        A new <b>Vendor Approval Request</b> has been submitted and requires your review.
+                        Please review the vendor details below and proceed with the approval process.
+                    </p>
+
+                    <table style="border-collapse:collapse; margin-top:10px;">
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Vendor Name</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Company</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="user.company_id.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Approval Level</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.vendor_current_approval_level_id.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Status</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.vendor_approval_state or ''"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top:20px;">
+                        Please click the button below to review the vendor request in the system:
+                    </p>
+
+                    <p>
+                        <a t-att-href="object.get_res_partner_url()"
+                           style="background-color:#875A7B;
+                          color:#ffffff;
+                          padding:10px 16px;
+                          text-decoration:none;
+                          border-radius:6px;
+                          font-weight:bold;">
+                            View Vendor Approval Request
+                        </a>
+                    </p>
+
+                    <p style="margin-top:20px;">
+                        If you require additional information, please contact the procurement team.
+                    </p>
+
+                    <p>
+                        Best Regards,
+                        <br/>
+                        <b>
+                            <t t-out="user.name"/>
+                        </b>
+                        <br/>
+                        <t t-out="user.company_id.name"/>
+                    </p>
+
+                    <hr style="margin-top:20px;"/>
+
+                    <p style="font-size:12px;color:#777;">
+                        This is an automated notification from the Vendor Approval Workflow.
+                        Please do not reply directly to this email.
+                    </p>
+
+                </div>
+            </field>
+        </record>
+
+        <!--        <record id="mail_template_vendor_final_approved" model="mail.template">-->
+        <!--            <field name="name">Vendor Approved - Notification</field>-->
+        <!--            <field name="model_id" ref="base.model_res_partner"/>-->
+        <!--            <field name="subject">Vendor Approved: {{ object.name }}</field>-->
+        <!--            <field name="email_from">{{ user.email_formatted or '' }}</field>-->
+        <!--            <field name="body_html" type="html">-->
+
+        <!--                <div>-->
+        <!--                    <p>Hello,</p>-->
+        <!--                    <p>-->
+        <!--                        <b>Vendor has been approved successfully.</b>-->
+        <!--                    </p>-->
+        <!--                    <ul>-->
+        <!--                        <li>-->
+        <!--                            <b>Name:</b>-->
+        <!--                            <t t-out="object.name or ''"/>-->
+        <!--                        </li>-->
+        <!--                        <li>-->
+        <!--                            <b>Company:</b>-->
+        <!--                            <t t-out="object.company_id.name or ''"/>-->
+        <!--                        </li>-->
+        <!--                        <li>-->
+        <!--                            <b>Status:</b>-->
+        <!--                            <t t-out="object.vendor_approval_state or ''"/>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                    <p>-->
+        <!--                        <a t-att-href="object.get_res_partner_url()"-->
+        <!--                           style="background:#2E7D32;color:#fff;padding:10px 14px;text-decoration:none;border-radius:6px;">-->
+        <!--                            View Vendor-->
+        <!--                        </a>-->
+        <!--                    </p>-->
+        <!--                    <p>Thanks.</p>-->
+        <!--                </div>-->
+        <!--            </field>-->
+        <!--        </record>-->
+        <record id="mail_template_vendor_final_approved" model="mail.template">
+            <field name="name">Vendor Approved - Notification</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="subject">Vendor Approved: {{ object.name }}</field>
+            <field name="email_from">{{ user.email_formatted or '' }}</field>
+
+            <field name="body_html" type="html">
+                <div style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333;">
+
+                    <p>Dear Team,</p>
+
+                    <p>
+                        We are pleased to inform you that the following vendor has successfully completed the
+                        approval process and is now authorized for business engagement.
+                    </p>
+
+                    <table style="border-collapse:collapse; margin-top:10px;">
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Vendor Name</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Approved By Company</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="user.company_id.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Approval Status</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.vendor_approval_state or ''"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top:20px;">
+                        You may review the vendor details in the system by clicking the button below.
+                    </p>
+
+                    <p>
+                        <a t-att-href="object.get_res_partner_url()"
+                           style="background-color:#2E7D32;
+                          color:#ffffff;
+                          padding:10px 16px;
+                          text-decoration:none;
+                          border-radius:6px;
+                          font-weight:bold;">
+                            View Vendor Details
+                        </a>
+                    </p>
+
+                    <p style="margin-top:20px;">
+                        Should you require any further information or clarification,
+                        please feel free to contact the procurement or administration team.
+                    </p>
+
+                    <p>
+                        Kind Regards,
+                        <br/>
+                        <b>
+                            <t t-out="user.name"/>
+                        </b>
+                        <br/>
+                        <t t-out="user.company_id.name"/>
+                    </p>
+
+                    <hr style="margin-top:20px;"/>
+
+                    <p style="font-size:12px;color:#777;">
+                        This message was automatically generated by the Vendor Approval Workflow System.
+                        Please do not reply directly to this email.
+                    </p>
+
+                </div>
+            </field>
+        </record>
+
+        <!--        <record id="mail_template_vendor_rejected" model="mail.template">-->
+        <!--            <field name="name">Vendor Rejected - Notification</field>-->
+        <!--            <field name="model_id" ref="base.model_res_partner"/>-->
+        <!--            <field name="subject">Vendor Rejected: {{ object.name }}</field>-->
+        <!--            <field name="email_from">{{ user.email_formatted or '' }}</field>-->
+        <!--            <field name="body_html" type="html">-->
+
+        <!--                <div>-->
+        <!--                    <p>Hello,</p>-->
+        <!--                    <p>-->
+        <!--                        <b>Vendor has been rejected.</b>-->
+        <!--                    </p>-->
+        <!--                    <ul>-->
+        <!--                        <li>-->
+        <!--                            <b>Name:</b>-->
+        <!--                            <t t-out="object.name or ''"/>-->
+        <!--                        </li>-->
+        <!--                        <li>-->
+        <!--                            <b>Company:</b>-->
+        <!--                            <t t-out="object.company_id.name or ''"/>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                    <p>-->
+        <!--                        <a t-att-href="object.get_res_partner_url()"-->
+        <!--                           style="background:#C62828;color:#fff;padding:10px 14px;text-decoration:none;border-radius:6px;">-->
+        <!--                            View Vendor-->
+        <!--                        </a>-->
+        <!--                    </p>-->
+        <!--                    <p>Thanks.</p>-->
+        <!--                </div>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="mail_template_vendor_rejected" model="mail.template">
+            <field name="name">Vendor Rejected - Notification</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="subject">Vendor Rejected: {{ object.name }}</field>
+            <field name="email_from">{{ user.email_formatted or '' }}</field>
+
+            <field name="body_html" type="html">
+                <div style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333;">
+
+                    <p>Dear Team,</p>
+
+                    <p>
+                        We regret to inform you that the following vendor request has not been approved
+                        and has been marked as rejected in the system.
+                    </p>
+
+                    <table style="border-collapse:collapse; margin-top:10px;">
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Vendor Name</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Company</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="user.company_id.name or ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px 10px;">
+                                <b>Approval Status</b>
+                            </td>
+                            <td style="padding:6px 10px;">:
+                                <t t-out="object.vendor_approval_state or ''"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top:20px;">
+                        You may review the vendor details and approval status in the system by clicking the button
+                        below.
+                    </p>
+
+                    <p>
+                        <a t-att-href="object.get_res_partner_url()"
+                           style="background-color:#C62828;
+                          color:#ffffff;
+                          padding:10px 16px;
+                          text-decoration:none;
+                          border-radius:6px;
+                          font-weight:bold;">
+                            View Vendor Details
+                        </a>
+                    </p>
+
+                    <p style="margin-top:20px;">
+                        Should you require further clarification or wish to revisit the vendor request,
+                        please coordinate with the concerned approval authority or procurement team.
+                    </p>
+
+                    <p>
+                        Kind Regards,
+                        <br/>
+                        <b>
+                            <t t-out="user.name or ''"/>
+                        </b>
+                        <br/>
+                        <t t-out="user.company_id.name or ''"/>
+                    </p>
+
+                    <hr style="margin-top:20px;"/>
+
+                    <p style="font-size:12px; color:#777;">
+                        This is an automated notification generated by the Vendor Approval Workflow System.
+                        Please do not reply directly to this email.
+                    </p>
+
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>
