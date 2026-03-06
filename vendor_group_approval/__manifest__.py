@@ -1,5 +1,5 @@
 {
-    "name": "Vendor Group Approval",
+    "name": "Vendor Group Approvals",
     "version": "17.0.1.0.0",
     "summary": "Vendor approval workflow with separate approval group and approval levels",
     "category": "Purchases",
