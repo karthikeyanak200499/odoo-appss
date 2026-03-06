@@ -277,318 +277,193 @@
 
 <!--new-->
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-
-<style>
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    font-family:Arial, Helvetica, sans-serif;
-    color:#444;
-}
-
-/* Banner */
-
-.banner{
-    background:#714B67;
-    color:white;
-    padding:40px;
-    border-radius:10px;
-    text-align:center;
-}
-
-.banner h1{
-    margin:0;
-    font-size:36px;
-}
-
-.banner p{
-    margin-top:10px;
-    font-size:16px;
-}
-
-/* Section */
-
-.section{
-    margin-top:40px;
-}
-
-.section h2{
-    color:#714B67;
-    border-bottom:2px solid #eee;
-    padding-bottom:8px;
-}
-
-/* Feature Grid */
-
-.features{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:20px;
-}
-
-.feature-card{
-    flex:1 1 45%;
-    border:1px solid #ddd;
-    padding:20px;
-    border-radius:8px;
-    background:#fafafa;
-}
-
-.feature-card h3{
-    margin-top:0;
-    color:#714B67;
-}
-
-/* Workflow */
-
-.workflow{
-    background:#f9f9f9;
-    padding:20px;
-    border-radius:8px;
-}
-
-.workflow ol{
-    padding-left:20px;
-}
-
-/* Badges */
-
-.badge{
-    display:inline-block;
-    padding:6px 12px;
-    margin:5px;
-    background:#eee;
-    border-radius:20px;
-    font-size:13px;
-}
-
-/* Screenshots */
-
-.screenshot{
-    margin-top:20px;
-}
-
-.screenshot img{
-    width:100%;
-    border-radius:8px;
-    border:1px solid #ddd;
-}
-
-/* Table */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-}
-
-th,td{
-    border:1px solid #ddd;
-    padding:10px;
-}
-
-th{
-    background:#f5f5f5;
-}
-
-/* Footer */
-
-.footer{
-    margin-top:50px;
-    text-align:center;
-    font-size:13px;
-    color:#777;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="banner">
-<h1>Vendor Group Approval</h1>
-<p>Structured vendor approval workflow for Odoo 17 with multi-level approvals and full audit history</p>
-</div>
-
-<div class="section">
-
-<h2>Key Features</h2>
-
-<div class="features">
-
-<div class="feature-card">
-<h3>Approval Groups</h3>
-<p>Create vendor approval groups and configure multi-level approval workflows.</p>
-</div>
-
-<div class="feature-card">
-<h3>Multi-Level Approvals</h3>
-<p>Assign multiple approvers to each level with sequence-based workflow.</p>
-</div>
-
-<div class="feature-card">
-<h3>Email Notifications</h3>
-<p>Automatic email notifications with direct vendor record link.</p>
-</div>
-
-<div class="feature-card">
-<h3>Approval History</h3>
-<p>Full audit trail including approver name, time, and notes.</p>
-</div>
-
-<div class="feature-card">
-<h3>Multi Company Support</h3>
-<p>Approval groups can be configured company-wise.</p>
-</div>
-
-<div class="feature-card">
-<h3>Clean Vendor Integration</h3>
-<p>Approval workflow integrated directly into the vendor form.</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Included Models</h2>
-
-<span class="badge">vendor.approval.group</span>
-<span class="badge">vendor.approval.level</span>
-<span class="badge">vendor.approval.matrix</span>
-<span class="badge">res.partner extension</span>
-
-<table>
-
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-
-<tr>
-<td>Vendor Approval Group</td>
-<td>Select the workflow group for vendor approval</td>
-</tr>
-
-<tr>
-<td>Current Approval Level</td>
-<td>Displays the active approval stage</td>
-</tr>
-
-<tr>
-<td>Pending At</td>
-<td>Shows the current approver users</td>
-</tr>
-
-<tr>
-<td>Approval State</td>
-<td>Draft / Pending / Approved / Rejected</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="section">
-
-<h2>Workflow</h2>
-
-<div class="workflow">
-
-<ol>
-<li>Create Vendor Approval Group</li>
-<li>Add approval levels</li>
-<li>Assign approver users</li>
-<li>Select group in vendor form</li>
-<li>Submit vendor for approval</li>
-<li>Approvers approve or reject</li>
-</ol>
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Screenshots</h2>
-
-<div class="screenshot">
-<p><b>Vendor Approval Group Configuration</b></p>
-<img src="Screenshot.png">
-</div>
-
-<div class="screenshot">
-<p><b>Vendor Form Approval Fields</b></p>
-<img src="Screenshot (1).png">
-</div>
-
-<div class="screenshot">
-<p><b>Vendor Approval Tab</b></p>
-<img src="Screenshot (2).png">
-</div>
-
-<div class="screenshot">
-<p><b>Approval History</b></p>
-<img src="Screenshot (4).png">
-</div>
-
-<div class="screenshot">
-<p><b>Email Notification</b></p>
-<img src="Screenshot (3).png">
-</div>
-
-<div class="screenshot">
-<p><b>Multi Company Filtering</b></p>
-<img src="Screenshot (5).png">
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Business Benefits</h2>
-
-<ul>
-<li>Prevent unauthorized vendor creation</li>
-<li>Standardize vendor approval process</li>
-<li>Improve compliance and governance</li>
-<li>Maintain approval audit trail</li>
-<li>Notify approvers automatically</li>
-</ul>
-
-</div>
-
-<div class="section">
-
-<h2>Support</h2>
-
-<p>
-For support or customization contact:
-</p>
-
-<p>
-<b>Email:</b> akarthikeyan104@gmail.com
-</p>
-
-</div>
-
-<div class="footer">
-
-Vendor Group Approval for Odoo 17
-
-</div>
-
-</div>
-
-</body>
-</html>
+<section style="max-width: 1200px; margin: 0 auto; font-family: Arial, Helvetica, sans-serif; color: #334155; line-height: 1.6;">
+
+    <div style="background: #714B67; color: #ffffff; padding: 40px 30px; border-radius: 12px; margin-bottom: 30px;">
+        <div style="font-size: 13px; background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 12px; border-radius: 20px; margin-bottom: 15px;">
+            Odoo 17 App Listing Content
+        </div>
+        <h1 style="margin: 0 0 15px; font-size: 34px;">Vendor Group Approval for Odoo 17</h1>
+        <p style="font-size: 16px; margin: 0 0 15px;">
+            Build a clean, company-wise vendor approval workflow with configurable approval groups,
+            sequence-based approval levels, approval history, email notifications, and clear visibility for approvers.
+        </p>
+
+        <div style="margin-top: 20px;">
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Separate Vendor Approval Models</span>
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Multi-Company Ready</span>
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Level-Based Workflow</span>
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Email Notifications</span>
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Approval History</span>
+            <span style="display:inline-block; background:#ffffff; color:#714B67; padding:8px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:bold;">Odoo 17 Compatible</span>
+        </div>
+    </div>
+
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:30px;">
+        <h2 style="margin-top:0; color:#243447;">Overview</h2>
+        <p>
+            This module helps companies control vendor onboarding through a structured approval workflow.
+            Users can assign a vendor approval group, submit a vendor for approval, and allow approvers
+            to review step by step until the vendor is approved or rejected.
+        </p>
+        <p>
+            It is especially useful for procurement, finance, and administration teams that need stronger
+            governance and clear approval traceability before a vendor can be used.
+        </p>
+    </div>
+
+    <h2 style="color:#243447;">Key Features</h2>
+    <table style="width:100%; border-collapse:collapse; margin-bottom:30px;">
+        <tr style="background:#f8fafc;">
+            <th style="border:1px solid #e2e8f0; padding:12px; text-align:left;">Feature</th>
+            <th style="border:1px solid #e2e8f0; padding:12px; text-align:left;">Description</th>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Separate Vendor Approval Engine</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Uses dedicated models for vendor approval groups, levels, and approval history.</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Approval Group Configuration</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Create multiple approval groups and define approval levels with sequence ordering.</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Multiple Approvers per Level</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Assign one or more users at each level and show current pending approvers on the vendor form.</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Sequence-Based Workflow</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Approval moves from one level to the next until final approval or rejection.</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Email Notifications</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Automatically notifies approvers and stakeholders with direct vendor links.</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Approval History & Audit Trail</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Tracks request, approval, rejection, approver, timestamp, and notes.</td>
+        </tr>
+    </table>
+
+    <h2 style="color:#243447;">Business Benefits</h2>
+    <ul style="margin-bottom:30px;">
+        <li>Prevent unauthorized vendor onboarding</li>
+        <li>Standardize vendor approval across departments</li>
+        <li>Enable company-wise visibility in multi-company environments</li>
+        <li>Improve compliance and approval governance</li>
+        <li>Keep users informed with direct approval links by email</li>
+        <li>Create a clear internal audit trail</li>
+    </ul>
+
+    <h2 style="color:#243447;">Included Models</h2>
+    <p>
+        <strong>vendor.approval.group</strong>,
+        <strong>vendor.approval.level</strong>,
+        <strong>vendor.approval.matrix</strong>,
+        <strong>res.partner extension</strong>
+    </p>
+
+    <table style="width:100%; border-collapse:collapse; margin-bottom:30px;">
+        <tr style="background:#f8fafc;">
+            <th style="border:1px solid #e2e8f0; padding:12px; text-align:left;">Field</th>
+            <th style="border:1px solid #e2e8f0; padding:12px; text-align:left;">Purpose</th>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Vendor Approval Group</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Select the workflow group for the vendor</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Current Approval Level</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Shows the active approval stage</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Pending At</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Displays current approver names</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Approval State</td>
+            <td style="border:1px solid #e2e8f0; padding:12px;">Draft / Pending / Approved / Rejected</td>
+        </tr>
+    </table>
+
+    <h2 style="color:#243447;">How the Workflow Works</h2>
+    <ol style="margin-bottom:30px;">
+        <li>Create a Vendor Approval Group with one or more levels.</li>
+        <li>Assign approvers to each level and define the sequence.</li>
+        <li>Select the approval group on the vendor form.</li>
+        <li>Click <strong>Submit for Approval</strong>.</li>
+        <li>Approvers review and approve or reject level by level.</li>
+    </ol>
+
+    <h2 style="color:#243447;">Configuration Steps</h2>
+    <ol style="margin-bottom:30px;">
+        <li>Create a Vendor Approval Group.</li>
+        <li>Add approval levels and set sequence.</li>
+        <li>Assign approver users to each level.</li>
+        <li>Open a vendor record.</li>
+        <li>Select the Vendor Approval Group.</li>
+        <li>Submit the vendor for approval.</li>
+        <li>Approvers review, approve, or reject.</li>
+    </ol>
+
+    <h2 style="color:#243447;">Multi-Company Support</h2>
+    <p style="margin-bottom:30px;">
+        The module can be configured so users only see approval groups that belong to the current company.
+        This keeps company-specific workflows separated and avoids cross-company confusion.
+    </p>
+    <ul style="margin-bottom:30px;">
+        <li>Company-wise approval groups</li>
+        <li>Domain filtering on vendor form</li>
+        <li>Optional record rules for stricter security</li>
+    </ul>
+
+    <h2 style="color:#243447;">Screenshots</h2>
+    <p>Add your screenshots in <code>static/description/</code> and keep the file names exactly as below.</p>
+
+    <div style="margin-bottom:20px;">
+        <p><strong>1. Vendor Approval Group menu and setup</strong></p>
+        <img src="Screenshot.png" alt="Vendor Approval Group menu and configuration screen" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <p><strong>2. Vendor form workflow fields</strong></p>
+        <img src="Screenshot (1).png" alt="Vendor form with Vendor Approval Group and Pending At fields" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <p><strong>3. Vendor Approval tab and history</strong></p>
+        <img src="Screenshot (2).png" alt="Vendor Approval tab with workflow status and approval history" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <p><strong>4. Approval History detail view</strong></p>
+        <img src="Screenshot (4).png" alt="Approval history detail view" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <p><strong>5. Approval email template preview</strong></p>
+        <img src="Screenshot (3).png" alt="Vendor approval email template preview" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <div style="margin-bottom:30px;">
+        <p><strong>6. Multi-company company-wise filtering</strong></p>
+        <img src="Screenshot (5).png" alt="Multi company vendor approval filtering" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px;"/>
+    </div>
+
+    <h2 style="color:#243447;">Why Buyers Will Understand This App Quickly</h2>
+    <ul style="margin-bottom:30px;">
+        <li>Menu path is clearly shown under Purchase configuration</li>
+        <li>Vendor form fields are easy to understand</li>
+        <li>Approval tab provides clear status and full history</li>
+        <li>Easy to explain to procurement, finance, and admin teams</li>
+    </ul>
+
+    <h2 style="color:#243447;">Support</h2>
+    <p>
+        Need customization, workflow improvements, or more screenshots for your listing?
+    </p>
+    <p>
+        <strong>Contact:</strong>
+        <a href="mailto:akarthikeyan104@gmail.com">akarthikeyan104@gmail.com</a>
+    </p>
+
+</section>
